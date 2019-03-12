@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	log "github.com/sirupsen/logrus"
+	"time"
 )
 
 func Init()  {
@@ -23,15 +24,12 @@ func Args(first int, arg ...interface{})  {
 }
 
 func main() {
+	start := time.Now()
+	log.WithFields(log.Fields{
+		"animal": "walrus",
+	}).Info("A walrus appears")
 
-  log.WithFields(log.Fields{
-    "animal": "walrus",
-  }).Info("A walrus appears")
-
-  nums := []int64{1, 2, 3, 4}
-  Args(1, nums)
-
-  Args(1)
-
-  Args(1, 2)
+	time.Sleep(time.Second)
+	fmt.Println(time.Since(start))
+	fmt.Println(float64(time.Since(start)) * 1e-6)
 }

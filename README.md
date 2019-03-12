@@ -1,6 +1,8 @@
 对一些工作中遇到的golang的问题，总结成代码，以备不时之需。这里的每一个文件都要阐明一个问题，并且能够直接运行。
 
 > * [Golang 工程经验](https://juejin.im/post/5a6873fb518825733e60a1ae)
+> * [RPC](https://blog.csdn.net/liubenlong007/article/details/54692241)
+> * [Bigcache](https://github.com/allegro/bigcache)
 
 
 ### Go 工程实践
@@ -18,7 +20,7 @@
 #### Go 包管理
   
 * GO111MODULE 环境变量
-    * `auto`：有go.mod使用go modules寻找依赖，否则使用旧的GOPATH和vendor机制
+    * `auto`：默认，有go.mod使用go modules寻找依赖，否则使用旧的GOPATH和vendor机制
     * `on`: 使用go modules寻找依赖
     * `off`：不使用go modules寻找依赖
 
@@ -31,7 +33,7 @@
     ```
 
 * go.mod
-  ``` GO
+  ``` 
 
   module suanjing
 
