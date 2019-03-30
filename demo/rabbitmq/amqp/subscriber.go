@@ -136,9 +136,9 @@ func (s *Subscriber) run() error {
 
 	iterate := true
 
-	if <-s.started != nil {
+	if s.started != nil {
 		close(s.started)
-		s.started <- nil
+		s.started = nil
 	}
 
 	for iterate {

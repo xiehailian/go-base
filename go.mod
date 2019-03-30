@@ -1,6 +1,11 @@
 module go-base
 
 require (
+	github.com/ProtocolONE/rabbitmq v0.0.0-20190129162844-9f24367e139c
+	github.com/assembla/cony v0.3.2
+	github.com/gogo/protobuf v1.2.1
+	github.com/golang/protobuf v1.2.0
+	github.com/google/uuid v1.1.0
 	github.com/hashicorp/consul v1.4.2
 	github.com/hashicorp/go-cleanhttp v0.5.0 // indirect
 	github.com/hashicorp/go-rootcerts v1.0.0 // indirect
@@ -15,5 +20,6 @@ require (
 	github.com/sirupsen/logrus v1.3.0
 	github.com/smartystreets/goconvey v0.0.0-20190222223459-a17d461953aa
 	github.com/streadway/amqp v0.0.0-20190225234609-30f8ed68076e
+	github.com/stretchr/testify v1.3.0
 	golang.org/x/net v0.0.0-20190213061140-3a22650c66bd
 )

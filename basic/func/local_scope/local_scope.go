@@ -3,7 +3,7 @@ package main
 var a string
 
 func main() {
-	a = "G"
+	a = "S"
 	print(a)
 	f1()
 
