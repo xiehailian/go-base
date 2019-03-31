@@ -44,9 +44,9 @@ func init() {
 }
 
 func main() {
-    flag.Parse()
+    flag.Parse()   // 解析命令行输入的参数，当遇到单独的一个“-”或不是“-”开始时，会停止解析
 
-    if h {
+    if h {    // 根据参数值，进入分支程序，执行相关功能
         flag.Usage()
     }
 }
