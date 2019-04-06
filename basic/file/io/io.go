@@ -69,3 +69,5 @@ func main() {
 	t3 := time.Now()
 	fmt.Printf("Cost time %v\n", t3.Sub(t2))
 }
+
+//基本上保持 bufio < ioutil < file.Read 这样的成绩， bufio读同一文件耗费时间最少， 效果稳稳地保持在最佳

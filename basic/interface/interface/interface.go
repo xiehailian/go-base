@@ -4,11 +4,28 @@ import (
 	"fmt"
 )
 
+
+
+type ReadWrite interface {
+    Read(b string) bool
+    Write(b string) bool
+}
+
+type Lock interface {
+    Lock()
+    Unlock()
+}
+
+// 接口嵌入
+type File interface {
+    ReadWrite
+    Lock
+    Close()
+}
+
 type A struct {
 	Books int
 }
-
-
 
 type B interface {
 	f()

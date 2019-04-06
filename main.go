@@ -57,5 +57,5 @@ func main() {
 
 	fmt.Println(KB)
 
-
+	fmt.Println(!true)
 }
