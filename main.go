@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"unsafe"
 )
 
 type ByteSize float64
@@ -35,6 +36,11 @@ func Args(first int, arg ...interface{})  {
 	fmt.Println(first, arg)
 }
 
+
+func yoloString(b []byte) string {
+	return *((*string)(unsafe.Pointer(&b)))
+}
+
 func main() {
 	//start := time.Now()
 	//log.WithFields(log.Fields{
@@ -45,17 +51,21 @@ func main() {
 	//fmt.Println(time.Since(start))
 	//fmt.Println(float64(time.Since(start)) * 1e-6)
 
-	type class struct {
-		i int
-	}
+	//type class struct {
+	//	i int
+	//}
+	//
+	// m :=  make(map[string]*class)
+	// c := &class{9}
+	// m["hehe"] = c
+	// c.i = 10
+	//fmt.Println(m["hehe"].i)
+	//
+	//fmt.Println(KB)
+	//
+	//fmt.Println(!true)
 
-	 m :=  make(map[string]*class)
-	 c := &class{9}
-	 m["hehe"] = c
-	 c.i = 10
-	fmt.Println(m["hehe"].i)
 
-	fmt.Println(KB)
-
-	fmt.Println(!true)
+	 arr := []byte{1, 2, 54, 32}
+	 fmt.Println(yoloString(arr))
 }

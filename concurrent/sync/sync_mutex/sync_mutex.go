@@ -6,23 +6,34 @@ import (
 	"time"
 )
 
+
+
 func main() {
-	locker := new(sync.Mutex)
-	ch := make(chan interface{})
-	go func() {
-		locker.Lock()
-		fmt.Println("get lock first")
-		time.Sleep(5 * time.Second)
-		locker.Unlock()
-	}()
+	wg := sync.WaitGroup{}
 
-	go func() {
-		locker.Lock()
-		fmt.Println("hello, lock")
-		locker.Unlock()
-		ch <- nil
-	}()
+	var mutex sync.Mutex   // 互斥锁
+	fmt.Println("Locking  (G0)")
+	mutex.Lock()
+	fmt.Println("locked (G0)")
+	wg.Add(3)    // 需要等待的goroute数量
 
-	fmt.Println("main")
-	<-ch //主线程等待完成
+	for i := 1; i < 4; i++ {
+		go func(i int) {
+			fmt.Printf("Locking (G%d)\n", i)
+			mutex.Lock()
+			fmt.Printf("locked (G%d)\n", i)
+
+			time.Sleep(time.Second * 2)
+			mutex.Unlock()
+			fmt.Printf("unlocked (G%d)\n", i)
+			wg.Done()    // 相当于 wg.Add(-1)
+		}(i)
+	}
+
+	time.Sleep(time.Second * 5)
+	fmt.Println("ready unlock (G0)")
+	mutex.Unlock()
+	fmt.Println("unlocked (G0)")
+
+	wg.Wait()     // 用来阻塞，当所有线程执行完毕，释放
 }
